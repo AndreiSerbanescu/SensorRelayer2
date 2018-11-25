@@ -232,6 +232,10 @@ public class MainActivity extends AppCompatActivity implements ServiceFragmentDe
                 .setIncludeTxPowerLevel(true)
                 .addServiceUuid(mSendTextFragment.getServiceUUID())
                 .build();
+
+
+        Intent debugIntent = new Intent(this, DebugActivity.class);
+        startActivity(debugIntent);
     }
 
     @Override
