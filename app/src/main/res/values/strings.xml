@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">BLEChatDrandrei</string>
+    <string name="notify">Notify</string>
+    <string name="connectionStatus">Connection Status</string>
+    <string name="devicesConnected">Devices Connected:</string>
+    <string name="errorWhenConnecting">An error occurred when connecting to a device. Error Code</string>
+    <string name="advertisingStatus">Advertising Status</string>
+    <string name="advertising">Advertising</string>
+    <string name="notAdvertising">Not Advertising</string>
+    <string name="advDataTooLarge">Not Advertising. Advertisement is large.</string>
+    <string name="advFeatureUnsupported">Not Advertising. Advertising not supported.</string>
+    <string name="advInternalError">Not Advertising. Internal error occurred.</string>
+    <string name="advTooManyAdvertisers">Not Advertising. No advertising instance is available.</string>
+    <string name="bluetoothNotSupported">BLE Chat closing: Bluetooth Not Supported</string>
+    <string name="bluetoothNotEnabled">BLE Chat closing: Bluetooth is Not Enabled</string>
+    <string name="bluetoothAdvertisingNotSupported">BLE Chat closing: Advertising Not Supported</string>
+    <string name="bleDeviceNotConnected">Not connected to any device</string>
+</resources>
