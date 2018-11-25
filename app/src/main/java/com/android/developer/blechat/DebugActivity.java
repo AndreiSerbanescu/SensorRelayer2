@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import com.airbnb.lottie.LottieAnimationView;
 
 public class DebugActivity extends AppCompatActivity {
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,17 +22,34 @@ public class DebugActivity extends AppCompatActivity {
 
     private void setupComponents() {
         Button waitingButton = findViewById(R.id.waiting_button);
+        Button lightSensorButton = findViewById(R.id.light_sensor_button);
 
-        LottieAnimationView loadingAnimationView = findViewById(R.id.av_from_code);
-        loadingAnimationView.setVisibility(View.GONE);
+        LottieAnimationView loadingAV = initAnimation(R.id.loading_animation);
+        LottieAnimationView lightSensorAV = initAnimation(R.id.light_sensor_animation);
 
-        waitingButton.setOnClickListener(v -> handleWaitingButtonOnClick(loadingAnimationView));
+        waitingButton.setOnClickListener(v -> handleWaitingButtonOnClick(loadingAV));
+        lightSensorButton.setOnClickListener(v -> handleLightButtonClick(lightSensorAV));
     }
 
     private void handleWaitingButtonOnClick(LottieAnimationView loadingAnimationView) {
-        loadingAnimationView.setVisibility(View.VISIBLE);
-        loadingAnimationView.playAnimation();
+        loadAnimation(loadingAnimationView);
     }
 
-    
+    private void handleLightButtonClick(LottieAnimationView lightSensorAV) {
+        loadAnimation(lightSensorAV);
+    }
+
+    private void loadAnimation(LottieAnimationView animationView) {
+        animationView.setVisibility(View.VISIBLE);
+        animationView.playAnimation();
+    }
+
+    private LottieAnimationView initAnimation(int animationID) {
+
+        LottieAnimationView animationView = findViewById(animationID);
+        animationView.setVisibility(View.GONE);
+
+        return animationView;
+    }
+
 }
