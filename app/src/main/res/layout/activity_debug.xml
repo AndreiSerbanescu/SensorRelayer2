@@ -17,17 +17,25 @@
             android:text="waiting screen"
             android:id="@+id/waiting_button"/>
 
-        <RelativeLayout
-            android:id="@+id/loading_panel"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/loading_panel"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center">-->
 
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:indeterminate="true"/>
-        </RelativeLayout>
+            <!--<ProgressBar-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:indeterminate="true"/>-->
+        <!--</RelativeLayout>-->
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/av_from_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="true"
+            app:lottie_fileName="loading.json"/>
 
     </LinearLayout>
 
