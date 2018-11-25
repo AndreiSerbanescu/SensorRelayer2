@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:lottie_autoPlay="false"
-            app:lottie_loop="true"
+            app:lottie_loop="false"
             app:lottie_fileName="light_sensor.json"/>
 
     </LinearLayout>
