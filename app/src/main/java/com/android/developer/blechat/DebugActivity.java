@@ -22,20 +22,6 @@ public class DebugActivity extends AppCompatActivity {
         setupComponents();
     }
 
-//    private void setupComponents() {
-//        Button waitingButton = findViewById(R.id.waiting_button);
-//        Button lightSensorButton = findViewById(R.id.light_sensor_button);
-//
-//        LottieAnimationView loadingAV = initAnimation(R.id.loading_animation);
-//        LottieAnimationView lightSensorAV = initAnimation(R.id.light_sensor_animation);
-//
-//        loadingAV.setVisibility(View.VISIBLE);
-//        loadingAV.playAnimation();
-//
-//        waitingButton.setOnClickListener(v -> handleWaitingButtonOnClick(loadingAV));
-//        lightSensorButton.setOnClickListener(v -> handleLightButtonClick(lightSensorAV));
-//    }
-
     private void setupComponents() {
         Button waitingButton = findViewById(R.id.waiting_button);
         Button lightSensorButton = findViewById(R.id.light_sensor_button);
