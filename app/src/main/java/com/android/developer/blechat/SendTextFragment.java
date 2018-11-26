@@ -35,9 +35,6 @@ public class SendTextFragment extends ServiceFragment {
 
     private ServiceFragmentDelegate mDelegate;
 
-    private ImageButton mSendButton;
-    private ImageButton mClearButton;
-    private EditText mEditText;
     private ListView mChatListView;
     private ArrayAdapter<String> mConversationArrayAdapter;
 
@@ -117,30 +114,6 @@ public class SendTextFragment extends ServiceFragment {
 
         return view;
     }
-
-    //Method that store the value entered by the user in the mSentDataCharacteristic and notify it
-    private final View.OnClickListener mSendButtonListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            String s = mEditText.getText().toString();
-            mSentDataCharacteristic.setValue(s);
-            mConversationArrayAdapter.add("Me: " + s);
-            mConversationArrayAdapter.notifyDataSetChanged();
-            mEditText.setText("");
-            mDelegate.sendNotificationToDevices(mSentDataCharacteristic);
-        }
-    };
-
-    //Method that clears the listView content and the mSentDataCharacteristic characteristic value
-    private final View.OnClickListener mClearButtonListener = new View.OnClickListener(){
-        @Override
-        public void onClick(View view) {
-            mSentDataCharacteristic.setValue("");
-            mReceivedDataCharacteristic.setValue("");
-            mConversationArrayAdapter.clear();
-            mEditText.setText("");
-        }
-    };
 
     public BluetoothGattService getBluetoothGattService() {
         return mChatService;
@@ -236,7 +209,6 @@ public class SendTextFragment extends ServiceFragment {
             builder.setMessage(measurementAlert + "\n" + dateAlert + "\n"
                                 + timeAlert + "\n" + sensorIdAlert)
                     .setPositiveButton("GOT IT", (dialog, idd) -> {});
-            // Create the AlertDialog object and return it
             builder.show();
         }
 
