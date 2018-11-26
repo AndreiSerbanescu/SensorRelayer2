@@ -98,14 +98,6 @@ public class SendTextFragment extends ServiceFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_send_text, container, false);
 
-        mEditText = view.findViewById(R.id.chat_edit_text);
-
-        mSendButton = view.findViewById(R.id.send_button);
-        mSendButton.setOnClickListener(mSendButtonListener);
-
-        mClearButton = view.findViewById(R.id.clear_button);
-        mClearButton.setOnClickListener(mClearButtonListener);
-
         mChatListView = view.findViewById(R.id.chat_list);
         mConversationArrayAdapter = new ArrayAdapter<>(getActivity(), R.layout.message);
         mChatListView.setAdapter(mConversationArrayAdapter);
@@ -117,7 +109,6 @@ public class SendTextFragment extends ServiceFragment {
 
 
         // added mock values - TODO remove
-
         mConversationArrayAdapter.add("Sensor value registered: 10");
         mConversationArrayAdapter.add("Sensor value registered: 100");
         mConversationArrayAdapter.add("Sensor value registered: 65");
@@ -185,7 +176,6 @@ public class SendTextFragment extends ServiceFragment {
 
 
         //parse sensor data
-
         StringTokenizer st = new StringTokenizer(s, ":");
         final String actualValue = st.nextToken().trim();
 
