@@ -236,9 +236,16 @@ public class SendTextFragment extends ServiceFragment {
             String measurementInfo = extractMeasurementInfo((String) parent.getAdapter().getItem(position));
 
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setMessage("extra info: " + measurementInfo)
-                    .setPositiveButton("KAY", (dialog, idd) -> {})
-                    .setNegativeButton("CHEERS", (dialog, idd) -> {});
+
+
+            String measurementAlert = "Measurement: " + measurementInfo;
+            String dateAlert = "Date received: 26/11/18";
+            String timeAlert = "Time received: 23:22";
+            String sensorIdAlert = "Sensor id: 1122";
+
+            builder.setMessage(measurementAlert + "\n" + dateAlert + "\n"
+                                + timeAlert + "\n" + sensorIdAlert)
+                    .setPositiveButton("GOT IT", (dialog, idd) -> {});
             // Create the AlertDialog object and return it
             builder.show();
         }
