@@ -98,15 +98,15 @@ public class SendTextFragment extends ServiceFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_send_text, container, false);
 
-        mEditText = (EditText) view.findViewById(R.id.chat_edit_text);
+        mEditText = view.findViewById(R.id.chat_edit_text);
 
-        mSendButton = (ImageButton)  view.findViewById(R.id.send_button);
+        mSendButton = view.findViewById(R.id.send_button);
         mSendButton.setOnClickListener(mSendButtonListener);
 
-        mClearButton = (ImageButton) view.findViewById(R.id.clear_button);
+        mClearButton = view.findViewById(R.id.clear_button);
         mClearButton.setOnClickListener(mClearButtonListener);
 
-        mChatListView = (ListView) view.findViewById(R.id.chat_list);
+        mChatListView = view.findViewById(R.id.chat_list);
         mConversationArrayAdapter = new ArrayAdapter<>(getActivity(), R.layout.message);
         mChatListView.setAdapter(mConversationArrayAdapter);
         mChatListView.setOnItemClickListener(new ChatItemOnClickListener(getContext()));
@@ -233,7 +233,7 @@ public class SendTextFragment extends ServiceFragment {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            String measurementInfo = (String) parent.getAdapter().getItem(position);
+            String measurementInfo = extractMeasurementInfo((String) parent.getAdapter().getItem(position));
 
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setMessage("extra info: " + measurementInfo)
@@ -241,6 +241,19 @@ public class SendTextFragment extends ServiceFragment {
                     .setNegativeButton("CHEERS", (dialog, idd) -> {});
             // Create the AlertDialog object and return it
             builder.show();
+        }
+
+        private String extractMeasurementInfo(String fullMeasurementInfo) {
+
+            StringTokenizer st = new StringTokenizer(fullMeasurementInfo);
+
+            String lastToken = "";
+
+            while (st.hasMoreTokens()) {
+                lastToken = st.nextToken();
+            }
+
+            return lastToken;
         }
     }
 }
