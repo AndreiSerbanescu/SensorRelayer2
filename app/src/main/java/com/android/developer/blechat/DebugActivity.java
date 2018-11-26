@@ -39,40 +39,25 @@ public class DebugActivity extends AppCompatActivity {
     private void setupComponents() {
         Button waitingButton = findViewById(R.id.waiting_button);
         Button lightSensorButton = findViewById(R.id.light_sensor_button);
+        Button waterSensorButton = findViewById(R.id.water_sensor_button);
 
 
         LottieAnimationView lightSensorAV = findViewById(R.id.light_sensor_animation);
-        lightSensorAV.setVisibility(View.INVISIBLE);
-
-        lightSensorAV.addAnimatorListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animation) {
-                lightSensorAV.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                lightSensorAV.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-                lightSensorAV.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-
-            }
-        });
-
+        lightSensorAV.setVisibility(View.GONE);
+        lightSensorAV.addAnimatorListener(new SensorAnimation(lightSensorAV));
         lightSensorAV.setOnClickListener(v -> lightSensorAV.cancelAnimation());
-
         lightSensorButton.setOnClickListener(v -> lightSensorAV.playAnimation());
 
 
+        LottieAnimationView waterSensorAV = findViewById(R.id.water_sensor_animation);
+        waterSensorAV.setVisibility(View.GONE);
+        waterSensorAV.addAnimatorListener(new SensorAnimation(waterSensorAV));
+        waterSensorAV.setOnClickListener(v -> waterSensorAV.cancelAnimation());
+        waterSensorButton.setOnClickListener(v -> waterSensorAV.playAnimation());
+
+
         LottieAnimationView loadingAnimation = findViewById(R.id.loading_animation);
-        loadingAnimation.setVisibility(View.INVISIBLE);
+        loadingAnimation.setVisibility(View.GONE);
 
         loadingAnimation.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
@@ -100,25 +85,32 @@ public class DebugActivity extends AppCompatActivity {
         waitingButton.setOnClickListener(v -> loadingAnimation.playAnimation());
     }
 
-    private void handleWaitingButtonOnClick(LottieAnimationView loadingAnimationView) {
-        //loadingAnimationView.setVisibility(View.VISIBLE);
-        //loadingAnimationView.playAnimation();
+    private static class SensorAnimation implements Animator.AnimatorListener {
 
-        loadingAnimationView.cancelAnimation();
-        loadingAnimationView.setVisibility(View.INVISIBLE);
+        private final LottieAnimationView animationView;
+
+        public SensorAnimation(LottieAnimationView animationView) {
+            this.animationView = animationView;
+        }
+
+        @Override
+        public void onAnimationStart(Animator animation) {
+            animationView.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        public void onAnimationEnd(Animator animation) {
+            animationView.setVisibility(View.GONE);
+        }
+
+        @Override
+        public void onAnimationCancel(Animator animation) {
+            animationView.setVisibility(View.GONE);
+        }
+
+        @Override
+        public void onAnimationRepeat(Animator animation) {
+
+        }
     }
-
-    private void handleLightButtonClick(LottieAnimationView lightSensorAV) {
-        lightSensorAV.setVisibility(View.VISIBLE);
-        lightSensorAV.playAnimation();
-    }
-
-    private LottieAnimationView initAnimation(int animationID) {
-
-        LottieAnimationView animationView = findViewById(animationID);
-        animationView.setVisibility(View.GONE);
-
-        return animationView;
-    }
-
 }
