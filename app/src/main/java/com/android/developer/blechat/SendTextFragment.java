@@ -5,12 +5,14 @@ import android.app.AlertDialog;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.ParcelUuid;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -107,6 +109,7 @@ public class SendTextFragment extends ServiceFragment {
         mChatListView = (ListView) view.findViewById(R.id.chat_list);
         mConversationArrayAdapter = new ArrayAdapter<>(getActivity(), R.layout.message);
         mChatListView.setAdapter(mConversationArrayAdapter);
+        mChatListView.setOnItemClickListener(new ChatItemOnClickListener(getContext()));
 
         //Initial values for the characteristics
         mReceivedDataCharacteristic.setValue(0, BluetoothGattCharacteristic.FORMAT_UINT8, 0);
@@ -220,7 +223,24 @@ public class SendTextFragment extends ServiceFragment {
         builder.show();
     }
 
-    private void tryLibrary() {
+    private static class ChatItemOnClickListener implements AdapterView.OnItemClickListener {
 
+        private final Context context;
+        private ChatItemOnClickListener(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            String measurementInfo = (String) parent.getAdapter().getItem(position);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setMessage("extra info: " + measurementInfo)
+                    .setPositiveButton("KAY", (dialog, idd) -> {})
+                    .setNegativeButton("CHEERS", (dialog, idd) -> {});
+            // Create the AlertDialog object and return it
+            builder.show();
+        }
     }
 }
