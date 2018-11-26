@@ -26,7 +26,13 @@ public class DebugActivity extends AppCompatActivity {
         Button waitingButton = findViewById(R.id.waiting_button);
         Button lightSensorButton = findViewById(R.id.light_sensor_button);
         Button waterSensorButton = findViewById(R.id.water_sensor_button);
+        Button sensorActivityButton = findViewById(R.id.sensor_activity);
 
+
+        sensorActivityButton.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
 
         LottieAnimationView lightSensorAV = findViewById(R.id.light_sensor_animation);
         lightSensorAV.setVisibility(View.GONE);

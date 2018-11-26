@@ -112,6 +112,15 @@ public class SendTextFragment extends ServiceFragment {
         mReceivedDataCharacteristic.setValue(0, BluetoothGattCharacteristic.FORMAT_UINT8, 0);
         mBLEChatInfoCharacteristic.setValue(getResources().getString(R.string.app_name));
 
+
+        // added mock values - TODO remove
+
+        mConversationArrayAdapter.add("Sensor value registered: 10");
+        mConversationArrayAdapter.add("Sensor value registered: 100");
+        mConversationArrayAdapter.add("Sensor value registered: 65");
+        mChatListView.setAdapter(mConversationArrayAdapter);
+        mConversationArrayAdapter.notifyDataSetChanged();
+
         return view;
     }
 

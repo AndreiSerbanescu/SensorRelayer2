@@ -234,8 +234,8 @@ public class MainActivity extends AppCompatActivity implements ServiceFragmentDe
                 .build();
 
 
-        Intent debugIntent = new Intent(this, DebugActivity.class);
-        startActivity(debugIntent);
+//        Intent debugIntent = new Intent(this, DebugActivity.class);
+//        startActivity(debugIntent);
     }
 
     @Override

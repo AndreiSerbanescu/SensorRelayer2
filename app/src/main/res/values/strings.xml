@@ -15,4 +15,8 @@
     <string name="bluetoothNotEnabled">BLE Chat closing: Bluetooth is Not Enabled</string>
     <string name="bluetoothAdvertisingNotSupported">BLE Chat closing: Advertising Not Supported</string>
     <string name="bleDeviceNotConnected">Not connected to any device</string>
+    <string name="waiting_screen">waiting screen</string>
+    <string name="light_sensor">light sensor</string>
+    <string name="water_sensor">water sensor</string>
+    <string name="sensor_activity">sensor activity</string>
 </resources>

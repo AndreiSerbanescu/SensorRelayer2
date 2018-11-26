@@ -14,7 +14,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="waiting screen"
+            android:text="@string/waiting_screen"
             android:id="@+id/waiting_button"/>
 
 
@@ -23,14 +23,19 @@
             android:id="@+id/light_sensor_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="light sensor"/>
+            android:text="@string/light_sensor"/>
 
         <Button
             android:id="@+id/water_sensor_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="water sensor"/>
+            android:text="@string/water_sensor"/>
 
+        <Button
+            android:id="@+id/sensor_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sensor_activity"/>
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/loading_animation"
